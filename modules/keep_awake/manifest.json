@@ -1,0 +1,10 @@
+{
+    "id": "keep_awake",
+    "name": "Keep Awake",
+    "category": "Utilities",
+    "version": "1.0.0",
+    "author": "Trisler Automation",
+    "description": "Windows idle prevention utility.",
+    "accent": "#EF4444",
+    "entry": "ui.py"
+}

@@ -1,0 +1,10 @@
+{
+    "id": "deliverable_publisher",
+    "name": "Deliverable Publisher",
+    "category": "Drawing Automation",
+    "version": "1.0.0",
+    "author": "Trisler Automation",
+    "description": "Batch plot and publish drawing packages.",
+    "accent": "#22C55E",
+    "entry": "module.py"
+}

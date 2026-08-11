@@ -1,0 +1,10 @@
+{
+    "id": "title_block_manager",
+    "name": "Title Block Manager",
+    "category": "Drawing Automation",
+    "version": "1.0.0",
+    "author": "Trisler Automation",
+    "description": "Update AutoCAD title block attributes from Excel data.",
+    "accent": "#A78BFA",
+    "entry": "module.py"
+}
