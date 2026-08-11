@@ -1,0 +1,10 @@
+{
+    "id": "project_hub",
+    "name": "Project Hub",
+    "category": "Drawing Automation",
+    "version": "0.1.0",
+    "author": "Trisler Automation",
+    "description": "Index a project folder and search every drawing, tag, revision, and deliverable from one place.",
+    "accent": "#38BDF8",
+    "entry": "module.py"
+}
