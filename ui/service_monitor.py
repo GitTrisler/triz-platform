@@ -1,3 +1,4 @@
+from ui.design_system import Colors
 from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout, QFrame, QPushButton, QProgressBar, QHBoxLayout
 from PySide6.QtCore import QTimer
 import qtawesome as qta
@@ -113,7 +114,7 @@ class ServiceMonitor(QWidget):
         h = QHBoxLayout(row)
         h.setContentsMargins(0, 4, 0, 4)
         icon_label = QLabel()
-        icon_label.setPixmap(qta.icon(icon_name, color="#9CA3AF").pixmap(18, 18))
+        icon_label.setPixmap(qta.icon(icon_name, color=Colors.MUTED).pixmap(18, 18))
         h.addWidget(icon_label)
         text_col = QVBoxLayout()
         text_col.setSpacing(0)

@@ -15,7 +15,7 @@ class DrawingListPanel(TRIZCard):
 
         self.heading = QLabel("DWG List (0)")
         self.heading.setStyleSheet(
-            "font-size: 16px; font-weight: 900; color: #F9FAFB;"
+            "font-size: 16px; font-weight: 900; color: #E8EDF6;"
         )
 
         menu = QLabel("☷")

@@ -7,6 +7,15 @@ DEFAULTS = {
     "page_setup": "Deliverable Publisher",
     "overwrite_pdfs": True,
     "close_drawings_after_publish": True,
+    "write_csv_log": True,
+    "recurse": True,
+    "template_dwg": "",
+    "layout_mode": "model",
+    "layout_filter": "ISO",
+    "merge_folder": "",
+    "merge_name": "Merged.pdf",
+    "merge_recurse": False,
+    "merge_archive_sources": False,
 }
 
 

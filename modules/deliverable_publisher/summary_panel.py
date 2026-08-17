@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QHBoxLayout
+from PySide6.QtWidgets import QGridLayout
 
 from ui.triz_widgets import TRIZCard, MetricTile
 
@@ -11,14 +11,16 @@ class SummaryPanel(TRIZCard):
             color="#F59E0B"
         )
 
-        row = QHBoxLayout()
-        row.setSpacing(14)
+        grid = QGridLayout()
+        grid.setHorizontalSpacing(10)
+        grid.setVerticalSpacing(10)
 
         self.drawings = MetricTile(
             label="Drawings",
             value="0",
             icon="fa5s.file-alt",
             color="#38BDF8",
+            compact=True,
         )
 
         self.processed = MetricTile(
@@ -26,6 +28,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.check-circle",
             color="#22C55E",
+            compact=True,
         )
 
         self.pdfs = MetricTile(
@@ -33,6 +36,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.file-pdf",
             color="#A78BFA",
+            compact=True,
         )
 
         self.failed = MetricTile(
@@ -40,6 +44,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.exclamation-triangle",
             color="#EF4444",
+            compact=True,
         )
 
         self.status = MetricTile(
@@ -47,15 +52,15 @@ class SummaryPanel(TRIZCard):
             value="Ready",
             icon="fa5s.flag",
             color="#F59E0B",
+            compact=True,
         )
+        for index, tile in enumerate((self.drawings, self.processed, self.pdfs,
+                                      self.failed, self.status)):
+            grid.addWidget(tile, index // 2, index % 2)
+        for column in range(2):
+            grid.setColumnStretch(column, 1)
 
-        row.addWidget(self.drawings)
-        row.addWidget(self.processed)
-        row.addWidget(self.pdfs)
-        row.addWidget(self.failed)
-        row.addWidget(self.status)
-
-        self.layout.addLayout(row)
+        self.layout.addLayout(grid)
 
     def reset(self):
         self.set_drawings(0)

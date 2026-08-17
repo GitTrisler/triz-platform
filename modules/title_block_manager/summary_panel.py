@@ -16,6 +16,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.file-alt",
             color="#38BDF8",
+            compact=True,
         )
 
         self.rows = MetricTile(
@@ -23,6 +24,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.table",
             color="#A78BFA",
+            compact=True,
         )
 
         self.matched = MetricTile(
@@ -30,6 +32,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.check-circle",
             color="#22C55E",
+            compact=True,
         )
 
         self.updated = MetricTile(
@@ -37,6 +40,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.pen",
             color="#F59E0B",
+            compact=True,
         )
 
         self.failed = MetricTile(
@@ -44,6 +48,7 @@ class SummaryPanel(TRIZCard):
             value="0",
             icon="fa5s.exclamation-triangle",
             color="#EF4444",
+            compact=True,
         )
 
         self.status = MetricTile(
@@ -51,17 +56,19 @@ class SummaryPanel(TRIZCard):
             value="Ready",
             icon="fa5s.flag",
             color="#F59E0B",
+            compact=True,
         )
 
         grid.addWidget(self.drawings, 0, 0)
         grid.addWidget(self.rows, 0, 1)
-        grid.addWidget(self.matched, 1, 0)
-        grid.addWidget(self.updated, 1, 1)
-        grid.addWidget(self.failed, 2, 0)
-        grid.addWidget(self.status, 2, 1)
+        grid.addWidget(self.matched, 0, 2)
+        grid.addWidget(self.updated, 1, 0)
+        grid.addWidget(self.failed, 1, 1)
+        grid.addWidget(self.status, 1, 2)
 
         grid.setColumnStretch(0, 1)
         grid.setColumnStretch(1, 1)
+        grid.setColumnStretch(2, 1)
 
         self.layout.addLayout(grid)
 

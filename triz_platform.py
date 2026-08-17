@@ -10,7 +10,8 @@ from PySide6.QtWidgets import (
     QVBoxLayout, QHBoxLayout, QFrame, QLineEdit,
     QStackedWidget, QTreeWidget, QTreeWidgetItem
 )
-from PySide6.QtGui import QShortcut, QKeySequence, QGuiApplication
+from PySide6.QtGui import (QShortcut, QKeySequence, QGuiApplication,
+                           QBrush, QColor)
 from PySide6.QtCore import Qt
 
 try:
@@ -29,6 +30,8 @@ from core.autocad import acad
 from core.platform import PlatformAPI
 from core.module_registry import ModuleRegistry
 
+from ui.design_system import Colors
+from ui.triz_widgets import BlueprintFrame
 from ui.status_bar import TRIZStatusBar
 from ui.dock_manager import DockManager
 from ui.floating_palette import FloatingCommandPalette
@@ -90,8 +93,14 @@ class TRIZPlatform(QMainWindow):
 
         self.dock = DockManager(self.pages)
 
+        # Drafting workspace: faint blueprint grid behind every module page.
+        workspace = BlueprintFrame()
+        workspace_layout = QVBoxLayout(workspace)
+        workspace_layout.setContentsMargins(0, 0, 0, 0)
+        workspace_layout.addWidget(self.dock)
+
         body_layout.addWidget(self.sidebar)
-        body_layout.addWidget(self.dock)
+        body_layout.addWidget(workspace)
 
         root_layout.addWidget(body, stretch=1)
 
@@ -138,7 +147,9 @@ class TRIZPlatform(QMainWindow):
         badge.setObjectName("TRIZBadge")
 
         title = QLabel("Platform")
-        title.setStyleSheet("font-size: 20px; font-weight: 900;")
+        title.setStyleSheet(
+            f"font-size: 17px; font-weight: 700; letter-spacing: 0.5px;"
+            f"color: {Colors.TEXT};")
 
         self.search = QLineEdit()
         self.search.setPlaceholderText("Search modules or commands...")
@@ -208,7 +219,7 @@ class TRIZPlatform(QMainWindow):
         item.setData(0, Qt.UserRole, page_name)
 
         if icon_name:
-            item.setIcon(0, qta.icon(icon_name, color="#F9FAFB"))
+            item.setIcon(0, qta.icon(icon_name, color=Colors.SECONDARY))
 
         self.nav.addTopLevelItem(item)
 
@@ -217,19 +228,20 @@ class TRIZPlatform(QMainWindow):
         parent.setData(0, Qt.UserRole, None)
 
         font = parent.font(0)
-        font.setPointSize(9)
+        font.setPointSize(8)
         font.setBold(True)
         parent.setFont(0, font)
+        parent.setForeground(0, QBrush(QColor(Colors.FAINT)))
 
         if icon_name:
-            parent.setIcon(0, qta.icon(icon_name, color="#9CA3AF"))
+            parent.setIcon(0, qta.icon(icon_name, color=Colors.FAINT))
 
         self.nav.addTopLevelItem(parent)
 
         for label, page_name, child_icon in children:
             child = QTreeWidgetItem([label])
             child.setData(0, Qt.UserRole, page_name)
-            child.setIcon(0, qta.icon(child_icon, color="#F9FAFB"))
+            child.setIcon(0, qta.icon(child_icon, color=Colors.SECONDARY))
             parent.addChild(child)
 
     def add_pages(self):

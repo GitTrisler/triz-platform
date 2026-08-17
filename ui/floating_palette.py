@@ -31,26 +31,26 @@ class FloatingCommandPalette(QDialog):
         shell.setObjectName("CommandPaletteShell")
         shell.setStyleSheet("""
             QFrame#CommandPaletteShell {
-                background-color: #111827;
-                border: 1px solid #374151;
+                background-color: #0F1726;
+                border: 1px solid #1E2A40;
                 border-radius: 12px;
             }
             QLabel {
-                color: #F9FAFB;
+                color: #E8EDF6;
                 font-family: Segoe UI;
             }
             QLineEdit {
-                background-color: #0B1120;
-                color: #F9FAFB;
-                border: 1px solid #374151;
+                background-color: #0A0F1A;
+                color: #E8EDF6;
+                border: 1px solid #1E2A40;
                 border-radius: 8px;
                 padding: 12px 14px;
                 font-size: 14px;
                 font-family: Segoe UI;
             }
             QListWidget {
-                background-color: #111827;
-                color: #F9FAFB;
+                background-color: #0F1726;
+                color: #E8EDF6;
                 border: none;
                 font-size: 14px;
                 font-family: Segoe UI;
@@ -61,7 +61,7 @@ class FloatingCommandPalette(QDialog):
                 border-radius: 6px;
             }
             QListWidget::item:selected {
-                background-color: #1F2937;
+                background-color: #131D31;
                 border-left: 4px solid #38BDF8;
             }
         """)
@@ -74,7 +74,7 @@ class FloatingCommandPalette(QDialog):
         title.setStyleSheet("font-size: 20px; font-weight: 900;")
 
         hint = QLabel("Type a module, page, or command. Use Enter to open, Esc to close.")
-        hint.setStyleSheet("color: #9CA3AF; font-size: 12px;")
+        hint.setStyleSheet("color: #64748B; font-size: 12px;")
 
         self.search = QLineEdit()
         self.search.setPlaceholderText("Search modules or commands...")

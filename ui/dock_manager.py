@@ -16,8 +16,13 @@ class DockManager(QWidget):
         horizontal = QSplitter(Qt.Horizontal)
         horizontal.addWidget(workspace)
         horizontal.addWidget(self.monitor)
-        horizontal.setStretchFactor(0, 8)
-        horizontal.setStretchFactor(1, 2)
-        horizontal.setSizes([950, 260])
+        horizontal.setStretchFactor(0, 1)
+        horizontal.setStretchFactor(1, 0)
+        horizontal.setSizes([1100, 250])
+        # The workspace holds the real content; the rail is reference data, so
+        # only the workspace grows when the window does.
+        horizontal.setCollapsible(0, False)
+        horizontal.setChildrenCollapsible(True)
+        self.monitor.setMaximumWidth(270)
 
         layout.addWidget(horizontal)

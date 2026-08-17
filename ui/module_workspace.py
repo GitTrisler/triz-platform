@@ -1,3 +1,4 @@
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QWidget,
     QLabel,
@@ -65,6 +66,8 @@ class ModuleWorkspace(QWidget):
         if scroll:
             self.scroll_area = QScrollArea()
             self.scroll_area.setWidgetResizable(True)
+            self.scroll_area.setHorizontalScrollBarPolicy(
+                Qt.ScrollBarAlwaysOff)
             self.scroll_area.setFrameShape(QScrollArea.NoFrame)
             self.scroll_area.setWidget(content)
             self.scroll_area.setStyleSheet(
@@ -79,20 +82,20 @@ class ModuleWorkspace(QWidget):
                 }
 
                 QScrollBar:vertical {
-                    background: #0B1220;
+                    background: #0A101C;
                     width: 10px;
                     margin: 0px;
                     border-radius: 5px;
                 }
 
                 QScrollBar::handle:vertical {
-                    background: #374151;
+                    background: #1E2A40;
                     min-height: 30px;
                     border-radius: 5px;
                 }
 
                 QScrollBar::handle:vertical:hover {
-                    background: #4B5563;
+                    background: #2B3B58;
                 }
 
                 QScrollBar::add-line:vertical,

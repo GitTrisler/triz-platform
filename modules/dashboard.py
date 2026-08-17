@@ -8,7 +8,7 @@ from PySide6.QtCore import Qt
 
 
 class MetricCard(QFrame):
-    def __init__(self, label, value, color="#F9FAFB"):
+    def __init__(self, label, value, color="#E8EDF6"):
         super().__init__()
         self.setObjectName("MetricCard")
 

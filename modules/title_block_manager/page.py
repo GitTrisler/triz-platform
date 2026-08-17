@@ -26,7 +26,7 @@ class TitleBlockManagerPage(ModuleWorkspace):
                 ("Update", "Write completed Excel values", "#A855F7"),
                 ("Complete", "Review results and logs", "#F59E0B"),
             ],
-            left_width=5,
+            left_width=6,
             right_width=4,
             scroll=False,
         )
@@ -36,10 +36,13 @@ class TitleBlockManagerPage(ModuleWorkspace):
         self.options_panel = OptionsPanel()
         self.summary_panel = SummaryPanel()
 
-        self.setup_panel.setMinimumHeight(340)
-        self.scan_panel.setMinimumHeight(205)
-        self.options_panel.setMinimumHeight(215)
-        self.summary_panel.setMinimumHeight(350)
+        for panel, floor in (
+            (self.setup_panel, 300),
+            (self.scan_panel, 190),
+            (self.options_panel, 210),
+            (self.summary_panel, 210),
+        ):
+            panel.setMinimumHeight(max(floor, panel.sizeHint().height()))
 
         self.add_left(self.setup_panel)
         self.add_left(self.options_panel)
